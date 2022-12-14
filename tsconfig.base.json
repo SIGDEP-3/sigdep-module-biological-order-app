@@ -14,7 +14,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@spbogui-openmrs/shared/model": ["libs/shared/model/src/index.ts"],
+      "@spbogui-openmrs/shared/service": ["libs/shared/service/src/index.ts"],
+      "@spbogui-openmrs/shared/ui": ["libs/shared/ui/src/index.ts"],
+      "@spbogui-openmrs/shared/utils": ["libs/shared/utils/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
