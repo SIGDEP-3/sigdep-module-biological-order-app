@@ -22,10 +22,10 @@ const findByQuery = async (
   return response.data.results;
 };
 
-const ProviderService = {
+export const ProviderService = {
   findOne,
   save,
   findByQuery,
 };
 
-export default ProviderService;
+// export default ProviderService;

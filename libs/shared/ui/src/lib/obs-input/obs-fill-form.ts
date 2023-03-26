@@ -1,6 +1,6 @@
 import { UseFormReturnType } from '@mantine/form';
-import { Encounter, EncounterForm } from '@sigeov-apps/common/models';
-import { getObsValueByObs } from '@sigeov-apps/common/utils';
+import { Encounter, EncounterForm } from '@spbogui-openmrs/shared/model';
+import { getObsValueByObs } from '@spbogui-openmrs/shared/utils';
 
 export const obsFillForm = (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

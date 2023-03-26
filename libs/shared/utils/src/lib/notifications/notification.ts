@@ -1,5 +1,5 @@
 import { showNotification } from '@mantine/notifications';
-import { Encounter } from '@sigeov-apps/common/models';
+import { Encounter } from '@spbogui-openmrs/shared/model';
 import { QueryObserverResult } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 

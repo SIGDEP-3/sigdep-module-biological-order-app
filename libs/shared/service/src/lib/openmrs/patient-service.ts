@@ -14,11 +14,12 @@ const findOne = async (uuid: string, params = 'full'): Promise<Patient> => {
 };
 
 const findOneByIdentifier = async (
-  // identifier: string,
-  params: string,
+  identifier: string,
   view = 'full'
 ): Promise<Patient[]> => {
-  const response = await api.get<any>(API_URL + `?v=${view}&${params}`);
+  const response = await api.get<any>(
+    API_URL + `?v=${view}&identifier=${identifier}`
+  );
   return response.data.results;
 };
 

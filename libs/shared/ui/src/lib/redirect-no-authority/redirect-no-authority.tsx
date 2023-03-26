@@ -1,5 +1,5 @@
-import { Privilege, Role } from '@sigeov-apps/common/models';
-import { encryptStorage, notification } from '@sigeov-apps/common/utils';
+import { Privilege, Role } from '@spbogui-openmrs/shared/model';
+import { notification } from '@spbogui-openmrs/shared/utils';
 import React from 'react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -14,7 +14,8 @@ export function RedirectNoAuthority({
   linkToRedirect,
 }: RedirectNoAuthorityProps) {
   const navigate = useNavigate();
-  const { user } = encryptStorage.getItem('session');
+  // const { user } = encryptStorage.getItem('session');
+  const user: any = {};
   const [privilegesLoaded, setPrivilegesLoaded] = React.useState(false);
   const [hasAuthority, setHasAuthority] = React.useState(true);
 

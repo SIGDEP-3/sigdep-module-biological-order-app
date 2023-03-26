@@ -6,6 +6,12 @@ export interface ConceptName {
   uuid: string;
 }
 
+export interface ConceptClass {
+  name: string;
+  description?: string;
+  uuid?: string;
+}
+
 export interface ConceptNameSave {
   name: string;
   locale: string;
@@ -53,8 +59,10 @@ export interface Concept {
   names: ConceptName[];
   datatype: ConceptDatatype;
   version?: string;
-  conceptClass?: string;
+  conceptClass?: ConceptClass;
   mappings?: ConceptMapping[];
   descriptions?: ConceptDescription[];
+  answers: Concept[];
   uuid: string;
+  display: string;
 }

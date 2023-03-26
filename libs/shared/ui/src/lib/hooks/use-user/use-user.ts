@@ -1,4 +1,4 @@
-import { UserService } from '@sigeov-apps/common/data-access';
+import { UserService } from '@spbogui-openmrs/shared/service';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useState, useCallback } from 'react';
 

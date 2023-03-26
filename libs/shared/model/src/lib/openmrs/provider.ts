@@ -27,6 +27,7 @@ export interface Provider {
   identifier: string;
   attributes: ProviderAttribute[];
   retired: boolean;
+  display: string;
   uuid: string;
 }
 export interface ProviderForm {

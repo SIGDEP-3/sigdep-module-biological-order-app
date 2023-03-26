@@ -39,6 +39,7 @@ export interface Encounter {
   encounterDatetime: Date;
   obs: Obs[];
   patient: Patient;
+  order?: string[];
   location: Location;
   encounterType: EncounterType;
   encounterProviders: EncounterProvider[];
@@ -65,6 +66,15 @@ export const ENCOUNTER_INITIAL_VALUES: EncounterForm = {
   uuid: undefined,
 };
 
+export const encounterProviderSchema = Joi.object<EncounterProviderForm>({
+  provider: Joi.string()
+    .required()
+    .messages({ 'string.empty': 'Ce champ est requis' }),
+  encounterRole: Joi.string()
+    .required()
+    .messages({ 'string.empty': 'Ce champ est requis' }),
+});
+
 export const encounterSchema = Joi.object<EncounterForm>({
   encounterDatetime: Joi.date()
     .required()
@@ -85,7 +95,7 @@ export const encounterSchema = Joi.object<EncounterForm>({
     }),
     otherwise: Joi.optional(),
   }),
-  encounterProviders: Joi.optional(),
+  encounterProviders: Joi.array().items(encounterProviderSchema),
   obs: Joi.optional(),
   uuid: Joi.optional(),
 });

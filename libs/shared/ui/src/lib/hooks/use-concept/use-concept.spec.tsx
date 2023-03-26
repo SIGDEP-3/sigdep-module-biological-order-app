@@ -1,11 +1,11 @@
 import { act, renderHook } from '@testing-library/react';
 import * as React from 'react';
 
-import useHousehold from './use-household';
+import useConcept from './use-concept';
 
-describe('useHousehold', () => {
+describe('useConcept', () => {
   it('should render successfully', () => {
-    const { result } = renderHook(() => useHousehold());
+    const { result } = renderHook(() => useConcept());
 
     expect(result.current.count).toBe(0);
 

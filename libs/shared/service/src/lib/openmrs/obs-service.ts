@@ -7,11 +7,13 @@ const filter = async (
   patient: string,
   concept: string,
   params = '',
+  view = 'default',
   limit = '1'
 ): Promise<Obs[]> => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const response = await api.get<any>(
-    API_URL + `?patient=${patient}&concept=${concept}&${params}&limit=${limit}`
+    API_URL +
+      `?patient=${patient}&concept=${concept}${params}&v=${view}&limit=${limit}`
   );
   return response.data.results;
 };

@@ -1,4 +1,8 @@
-import { Encounter, EncounterForm } from '@sigeov-apps/common/models';
+import {
+  Encounter,
+  EncounterForm,
+  OrderForm,
+} from '@spbogui-openmrs/shared/model';
 import {
   QueryObserverResult,
   RefetchOptions,
@@ -6,8 +10,12 @@ import {
   useMutation,
 } from '@tanstack/react-query';
 import { useQuery } from '@tanstack/react-query';
-import { encounterToForm } from '@sigeov-apps/common/utils';
-import { EncounterService } from '@sigeov-apps/common/data-access';
+import { encounterToForm } from '@spbogui-openmrs/shared/utils';
+import {
+  EncounterService,
+  ObsService,
+  OrderService,
+} from '@spbogui-openmrs/shared/service';
 
 export interface UseFindEncounter {
   encounter: Encounter | undefined;
@@ -46,6 +54,7 @@ export const useFindEncounter = (
 export const useFindFilteredEncounter = (
   patient: string,
   encounterType: string,
+  views = 'full',
   params: string,
   limit = '1',
   enabled = false
@@ -57,7 +66,13 @@ export const useFindFilteredEncounter = (
   } = useQuery(
     [encounterType, patient, params, limit],
     async () =>
-      await EncounterService.filter(patient, encounterType, params, limit),
+      await EncounterService.filter(
+        patient,
+        encounterType,
+        views,
+        params,
+        limit
+      ),
     { enabled }
   );
 
@@ -136,4 +151,35 @@ export const useRemoveEncounter = () => {
     removeEncounter,
     isLoading,
   };
+};
+
+export const useSaveOrder = () => {
+  const { mutate: saveOrder, isLoading } = useMutation((order: OrderForm) =>
+    OrderService.save(order)
+  );
+  return {
+    saveOrder,
+    isLoading,
+  };
+};
+
+export const useFindObs = (
+  patient: string,
+  concept: string,
+  otherParams = '',
+  view = 'default'
+) => {
+  const {
+    data,
+    refetch: findObs,
+    isLoading,
+  } = useQuery(
+    [concept, patient, view, otherParams],
+    async () => await ObsService.filter(patient, concept, otherParams, view),
+    { enabled: true }
+  );
+
+  const obs = data ? data : [];
+
+  return { obs, findObs, isLoading };
 };

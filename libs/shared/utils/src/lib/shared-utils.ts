@@ -52,22 +52,22 @@ export const locationHierarchyToSelectItems = (
   return locationList;
 };
 
-export const createListFromTree = (location: Location): Location[] => {
-  const locations: Location[] = [...[location]];
-  if (
-    location.childLocations &&
-    (!location.tags ||
-      location.tags.some((l) => l.uuid === LocationTags.SAFE_SPACE))
-  ) {
-    locations.push(
-      ...location.childLocations.map((l) => {
-        if (l.childLocations) {
-          locations.push(...createListFromTree(l));
-        }
-        return l;
-      })
-    );
-  }
+// export const createListFromTree = (location: Location): Location[] => {
+//   const locations: Location[] = [...[location]];
+//   if (
+//     location.childLocations &&
+//     (!location.tags ||
+//       location.tags.some((l) => l.uuid === LocationTags.SAFE_SPACE))
+//   ) {
+//     locations.push(
+//       ...location.childLocations.map((l) => {
+//         if (l.childLocations) {
+//           locations.push(...createListFromTree(l));
+//         }
+//         return l;
+//       })
+//     );
+//   }
 
-  return locations;
-};
+//   return locations;
+// };

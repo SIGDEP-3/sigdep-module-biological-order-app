@@ -52,7 +52,8 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "biological-order:build",
-        "hmr": true
+        "hmr": true,
+        "proxyConfig": "apps/biological-order/proxy.conf.json"
       },
       "configurations": {
         "development": {

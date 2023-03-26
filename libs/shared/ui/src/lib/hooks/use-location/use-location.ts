@@ -1,10 +1,10 @@
-import { LocationService } from '@sigeov-apps/common/data-access';
+import { LocationService } from '@spbogui-openmrs/shared/service';
 import {
   Location,
   LocationForm,
   LocationTag,
-} from '@sigeov-apps/common/models';
-import { LocationTags, locationToForm } from '@sigeov-apps/common/utils';
+} from '@spbogui-openmrs/shared/model';
+import { LocationTags, locationToForm } from '@spbogui-openmrs/shared/utils';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useState, useCallback } from 'react';
 

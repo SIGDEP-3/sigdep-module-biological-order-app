@@ -5,13 +5,15 @@ import {
   InputBase,
   NumberInput,
   Radio,
+  Select,
+  SelectItem,
   Textarea,
   TextInput,
 } from '@mantine/core';
 import { DatePicker, TimeInput } from '@mantine/dates';
 import { UseFormReturnType } from '@mantine/form';
-import { EncounterForm } from '@sigeov-apps/common/models';
-import { setObs } from '@sigeov-apps/common/utils';
+import { EncounterForm } from '@spbogui-openmrs/shared/model';
+import { setObs } from '@spbogui-openmrs/shared/utils';
 import { ReactNode, useCallback, useEffect, useState } from 'react';
 import 'dayjs/locale/fr';
 import { IconCalendar, IconClock } from '@tabler/icons';
@@ -50,7 +52,7 @@ export interface ObsInputProps {
   label?: string;
   form: UseFormReturnType<any>;
   name: string;
-  type?: 'checkbox' | 'radio' | 'text' | 'date' | 'number' | 'time';
+  type?: 'checkbox' | 'radio' | 'text' | 'date' | 'number' | 'time' | 'select';
   setEncounter?: (encounter: React.SetStateAction<EncounterForm>) => void;
   children?: ReactNode;
   mask?: ReactNode;
@@ -61,6 +63,7 @@ export interface ObsInputProps {
   disabled?: boolean;
   readOnly?: boolean;
   variant?: string;
+  data?: SelectItem[];
   // defaultValue?: string | boolean | Date;
 }
 
@@ -82,6 +85,7 @@ export function ObsInput({
   disabled,
   readOnly,
   variant,
+  data,
 }: // defaultValue,
 ObsInputProps) {
   const [innerValue, setInnerValue] = useState<any>(undefined);
@@ -199,8 +203,8 @@ ObsInputProps) {
         maxDate={maxDate || new Date()}
         {...form.getInputProps(name)}
         disabled={disabled}
-        locale={'fr'}
         inputFormat={'DD/MM/YYYY'}
+        locale={'fr'}
         style={style}
         onBlurCapture={() => setIsChanged(true)}
         placeholder={placeholder}
@@ -276,6 +280,24 @@ ObsInputProps) {
         maskChar={' '}
         onBlurCapture={() => setIsChanged(true)}
         variant={variant}
+      />
+    );
+  }
+
+  if (type === 'select') {
+    return (
+      <Select
+        placeholder={placeholder}
+        // label={label}
+        {...form.getInputProps(name)}
+        disabled={disabled}
+        // onBlur={() => setInnerValue(form.values[name])}
+        style={style}
+        readOnly={readOnly}
+        onClick={() => setInnerValue(form.values[name])}
+        onBlurCapture={() => setIsChanged(true)}
+        variant={variant}
+        data={data}
       />
     );
   }

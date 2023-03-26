@@ -1,8 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { PatientForm, PatientIdentifierForm } from '@sigeov-apps/common/models';
+import {
+  PatientForm,
+  PatientIdentifierForm,
+} from '@spbogui-openmrs/shared/model';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { PatientService } from '@sigeov-apps/common/data-access';
-import { patientToForm } from '@sigeov-apps/common/utils';
+import { PatientService } from '@spbogui-openmrs/shared/service';
+import { patientToForm } from '@spbogui-openmrs/shared/utils';
 
 export function useFindOnePatient(
   uuid: string,
@@ -28,6 +31,27 @@ export function useFindOnePatient(
     isLoading,
   };
 }
+
+export const useFindPatientByIdentifier = (
+  identifier: string,
+  views = 'full',
+  enabled = false
+) => {
+  const {
+    data,
+    refetch: getPatient,
+    isLoading,
+    isSuccess,
+  } = useQuery(
+    ['patient', identifier, views],
+    async () => await PatientService.findOneByIdentifier(identifier, views),
+    { enabled }
+  );
+
+  const patient = data && data.length > 0 ? data[0] : undefined;
+
+  return { patient, getPatient, isLoading, isSuccess };
+};
 
 export const useFindFilteredPatient = (
   // identifier: string | undefined,

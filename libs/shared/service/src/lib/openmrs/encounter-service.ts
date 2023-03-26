@@ -12,13 +12,15 @@ const findOne = async (uuid: string, params: string): Promise<Encounter> => {
 const filter = async (
   patient: string,
   encounterType: string,
+  views: string,
   params: string,
   limit = '1'
 ): Promise<Encounter[]> => {
   const encounterTypeParam =
     encounterType !== '' ? `&encounterType=${encounterType}` : '';
+  const parameters = params !== '' ? '&' + params : '';
   const response = await api.get<any>(
-    `/encounter?patient=${patient}${encounterTypeParam}&v=${params}&limit=${limit}`
+    `/encounter?patient=${patient}${encounterTypeParam}&v=${views}${parameters}&limit=${limit}`
   );
   return response.data.results;
 };

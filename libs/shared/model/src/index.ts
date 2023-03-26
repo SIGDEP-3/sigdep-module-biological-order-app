@@ -8,3 +8,4 @@ export * from './lib/openmrs/location';
 export * from './lib/openmrs/users';
 export * from './lib/openmrs/obs';
 export * from './lib/openmrs/person';
+export * from './lib/openmrs/order';
