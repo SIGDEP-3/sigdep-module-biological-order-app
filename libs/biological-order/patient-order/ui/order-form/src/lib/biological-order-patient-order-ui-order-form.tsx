@@ -87,7 +87,7 @@ export function BiologicalOrderPatientOrderUiOrderForm({
   // const { patient } = useFindOnePatient(patientId, 'full', true);
 
   const handleSubmit = (values: OrderFormType) => {
-
+    form.values.encounter.patient = patient ?patient.uuid : "";
     console.log(JSON.stringify(values));
     setOrderForm(form.values.encounter);
     setIsSaving(true);
@@ -124,12 +124,12 @@ export function BiologicalOrderPatientOrderUiOrderForm({
                 const order = form.values.order;
                 order.patient = data.patient.uuid;
                 order.encounter = data.uuid;
-                const orderer = data.encounterProviders.find(
+                const orderer = form.values.encounter.encounterProviders.find(
                   (e) =>
-                    e.encounterRole.uuid ===
+                    e.encounterRole ===
                     'CLINICIANRRRRRRRRRRRRRRRRRRRRRRRRRRRRR'
                 );
-                order.orderer = orderer ? orderer.uuid : '';
+                order.orderer = orderer ? orderer.provider : '';
                 saveOrder(order, {
                   onSuccess: () => {
                     notification(

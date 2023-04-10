@@ -57,7 +57,7 @@ export function OrderForm({
     <form onSubmit={form.onSubmit(handleSubmit)}>
       {patient && (
         <>
-        {form.values.encounter.patient = patient.uuid}
+        {/* {form.values.encounter.patient = patient.uuid} */}
         <Container>
           <Text size={'lg'} mb={'lg'} weight={'bold'} color={'cyan.6'}>
             DONNEES PATIENT
@@ -292,6 +292,7 @@ export function OrderForm({
             /> */}
           </Group>
           <Paper withBorder p={'xs'}>
+          <Group mb={'sm'}>
             <Text size={'sm'} weight="bold" underline>
               Motif de la demande de la CV
             </Text>
@@ -319,13 +320,29 @@ export function OrderForm({
                 />
                 <Space />
                 <Text size={'sm'} pb={5}>
-                  Autres (à préciser)
+                Échec immunologique
+                </Text>    
+                <Radio
+                  // label={'CV contrôle sous ARV'}
+                  value={'160566AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'}
+                />
+                
+                <Space />
+                <Text size={'sm'} pb={8}>
+                  Échec clinique
                 </Text>
                 <Radio
                   // label={'CV contrôle sous ARV'}
-                  value={'5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'}
+                  value={'CI0050010AAAAAAAAAAAAAAAAAAAAAAAAAAA'}
                 />
-                <ObsInput
+              </Group>
+            </ObsInput>
+            </Group>
+            <Group mb={'sm'}>
+            <Text size={'sm'} pb={5}>
+                  Autres (à préciser)
+                </Text>
+            <ObsInput
                   style={{ width: '20%' }}
                   variant="unstyled"
                   placeholder={
@@ -335,25 +352,7 @@ export function OrderForm({
                   form={form}
                   name={'otherCVReason'}
                 />
-              </Group>
-              <Group>
-                <Text size={'sm'} pb={8}>
-                  Échec immunologique
-                </Text>
-                <Radio
-                  // label={'CV contrôle sous ARV'}
-                  value={'CV contrôle sous ARV'}
-                />
-                <Space />
-                <Text size={'sm'} pb={8}>
-                  Échec clinique
-                </Text>
-                <Radio
-                  // label={'CV contrôle sous ARV'}
-                  value={'CV contrôle sous ARV'}
-                />
-              </Group>
-            </ObsInput>
+            </Group>
           </Paper>
 
           <Grid my={'md'} pl={'lg'}>
@@ -459,7 +458,7 @@ export function OrderForm({
             <ObsInput
               form={form}
               name={'latestViralLoad'}
-              concept={'163545AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'}
+              concept={'CI0050011AAAAAAAAAAAAAAAAAAAAAAAAAAA'}
               variant="unstyled"
               placeholder={'.........................................'}
             />
