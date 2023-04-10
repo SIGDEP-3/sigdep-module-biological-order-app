@@ -14,8 +14,10 @@ export interface OrderFormType {
   // breastfeeding: boolean;
   requestReason: string;
   hivType: string;
-  isPregnant: string;
-  isNursing: string;
+  //currentlyBreastfeedingChild : boolean;
+  //pregnancyStatus : boolean;
+ // isPregnant: string;
+  //isNursing: string;
   isOnTreatment?: string;
   initialCd4Absolute?: string;
   initialCd4Percentage?: string;
@@ -27,13 +29,14 @@ export interface OrderFormType {
   latestViralLoad?: string;
   latestViralLoadDate?: Date;
   requestDate?: Date;
-  collectionDate?: Date;
-  collectionHour: string;
+  //collectionDate?: Date;
+  //collectionHour: string;
   collectionType: string;
   arvInitialYear?: string;
   regime?: string;
   regimeLine?: string;
   otherRegimeLine?: string;
+  otherCVReason? : string
 }
 
 export const orderFormSchema = Joi.object<OrderFormType>({
@@ -43,8 +46,10 @@ export const orderFormSchema = Joi.object<OrderFormType>({
     .required()
     .messages({ 'string.empty': 'Le motif de la demande de CV est requis' }),
   // breastfeeding: Joi.optional(),
-  isPregnant: Joi.optional(),
-  isNursing: Joi.optional(),
+  //isPregnant: Joi.optional(),
+  //isNursing: Joi.optional(),
+  //currentlyBreastfeedingChild : Joi.optional,
+ // pregnancyStatus : Joi.optional,
   isOnTreatment: Joi.optional(),
   hivType: Joi.optional(),
   initialCd4Percentage: Joi.string()
@@ -66,12 +71,12 @@ export const orderFormSchema = Joi.object<OrderFormType>({
   requestDate: Joi.date()
     .required()
     .messages({ 'any.required': 'La date de la demande est requise' }),
-  collectionDate: Joi.date()
-    .required()
-    .messages({ 'any.empty': 'La date de prélèvement est requise' }),
-  collectionHour: Joi.string()
-    .required()
-    .messages({ 'string.empty': "L'heure de prélèvement est requise" }),
+  // collectionDate: Joi.date()
+  //   .required()
+  //   .messages({ 'any.empty': 'La date de prélèvement est requise' }),
+  // collectionHour: Joi.string()
+  //   .required()
+  //   .messages({ 'string.empty': "L'heure de prélèvement est requise" }),
   collectionType: Joi.string()
     .required()
     .messages({ 'string.empty': 'Le type de prélèvement est requis' }),
@@ -96,8 +101,10 @@ export const ORDER_FORM_INITIAL_VALUE: OrderFormType = {
   },
   requestReason: '',
   hivType: '',
-  isPregnant: '',
-  isNursing: '',
+  //isPregnant: '',
+  //isNursing: '',
+  //currentlyBreastfeedingChild: false,
+  //pregnancyStatus : false ,
   isOnTreatment: '',
   initialCd4Percentage: '',
   initialCd4Absolute: '',
@@ -109,36 +116,38 @@ export const ORDER_FORM_INITIAL_VALUE: OrderFormType = {
   latestViralLoad: '',
   latestViralLoadDate: undefined,
   arvInitialYear: '',
-  collectionDate: undefined,
+  //collectionDate: undefined,
   requestDate: undefined,
-  collectionHour: '',
+  //collectionHour: '',
   collectionType: '',
   regimeLine: '',
   otherRegimeLine: '',
   regime: '',
+  otherCVReason : ""
 };
 
 export const orderObsRecord: Record<string, string> = {
   CI0030001AAAAAAAAAAAAAAAAAAAAAAAAAAA: 'hivType',
   '5272AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA': 'pregnancyStatus',
   '5632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA': 'currentlyBreastfeedingChild',
-  isOnTreatment: 'isOnTreatment',
+  CI0060001AAAAAAAAAAAAAAAAAAAAAAAAAAA: 'isOnTreatment',
   CI0050002AAAAAAAAAAAAAAAAAAAAAAAAAAA: 'requestReason',
-  '164429AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA': 'initialCd4Absolute',
-  '164430AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA': 'initialCd4Percentage',
+  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA001: 'initialCd4Absolute',
+  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA002: 'initialCd4Percentage',
   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIII: 'initialCd4Date',
   '5497AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA': 'latestCd4Absolute',
   '730AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA': 'latestCd4Percentage',
   '160103AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA': 'latestCd4Date',
   '166073AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA': 'regimeLine',
-  otherRegimeLine: 'otherRegimeLine',
-  regime: 'regime',
+  CI0060002AAAAAAAAAAAAAAAAAAAAAAAAAAA: 'otherRegimeLine',
+  CI0060003AAAAAAAAAAAAAAAAAAAAAAAAAAA: 'regime',
   CI0050004AAAAAAAAAAAAAAAAAAAAAAAAAAA: 'hasViralLoad',
   '163545AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA': 'latestViralLoad',
   CI0050005AAAAAAAAAAAAAAAAAAAAAAAAAAA: 'latestViralLoadDate',
-  CI0050005AAAAAAAAAAAAAAAAAAAAAAAAAA: 'requestDate',
+  CI0050006AAAAAAAAAAAAAAAAAAAAAAAAAAA: 'requestDate',
   CI0050007AAAAAAAAAAAAAAAAAAAAAAAAAAA: 'collectionType',
-  CI0050006AAAAAAAAAAAAAAAAAAAAAAAAAAA: 'collectionHour',
+  CI0050008AAAAAAAAAAAAAAAAAAAAAAAAAAA: 'collectionHour',
   '164422AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA': 'laboratoryName',
   CI0050001AAAAAAAAAAAAAAAAAAAAAAAAAAA: 'otherCVReason',
+ // CI0060004AAAAAAAAAAAAAAAAAAAAAAAAAAA : arvInitialYear
 };

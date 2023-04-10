@@ -44,7 +44,7 @@ export function BiologicalOrderPatientOrderUiOrderForm({
   );
   const form = useForm<OrderFormType>({
     initialValues: ORDER_FORM_INITIAL_VALUE,
-    validate: joiResolver(orderFormSchema),
+   // validate: joiResolver(orderFormSchema),
   });
 
   const {
@@ -77,17 +77,18 @@ export function BiologicalOrderPatientOrderUiOrderForm({
   );
 
   // To removed - just to ensure the data are loaded
-  console.log(
-    pregnancyStatus,
-    currentlyBreastfeedingChild,
-    initialCd4Absolute,
-    initialCd4Percentage
-  );
+  //console.log(
+   // pregnancyStatus,
+   // currentlyBreastfeedingChild,
+   // initialCd4Absolute,
+   // initialCd4Percentage
+  //);
 
   // const { patient } = useFindOnePatient(patientId, 'full', true);
 
   const handleSubmit = (values: OrderFormType) => {
-    console.log(values);
+
+    console.log(JSON.stringify(values));
     setOrderForm(form.values.encounter);
     setIsSaving(true);
   };

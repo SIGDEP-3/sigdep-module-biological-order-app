@@ -56,6 +56,8 @@ export function OrderForm({
   return (
     <form onSubmit={form.onSubmit(handleSubmit)}>
       {patient && (
+        <>
+        {form.values.encounter.patient = patient.uuid}
         <Container>
           <Text size={'lg'} mb={'lg'} weight={'bold'} color={'cyan.6'}>
             DONNEES PATIENT
@@ -102,6 +104,7 @@ export function OrderForm({
                 type={'checkbox'}
                 name={'pregnancyStatus'}
                 readOnly
+                
                 // label={'Allaitement'}
               />
             </Group>
@@ -120,6 +123,7 @@ export function OrderForm({
                 type={'checkbox'}
                 name={'currentlyBreastfeedingChild'}
                 readOnly
+                
                 // label={'Allaitement'}
               />
             </Group>
@@ -192,7 +196,7 @@ export function OrderForm({
           <Group>
             <Text size={'sm'}>Le patient est-il actuellement sous ARV ?</Text>
             <ObsInput
-              concept=""
+              concept="CI0060001AAAAAAAAAAAAAAAAAAAAAAAAAAA"
               name="isOnTreatment"
               form={form}
               type={'radio'}
@@ -216,7 +220,7 @@ export function OrderForm({
             <ObsInput
               form={form}
               name={'arvInitialYear'}
-              concept={'conceptInitiationYear'}
+              concept='CI0060004AAAAAAAAAAAAAAAAAAAAAAAAAAA'
               placeholder="......"
               variant={'unstyled'}
               mask={'9999'}
@@ -263,7 +267,7 @@ export function OrderForm({
                 <ObsInput
                   form={form}
                   name={'otherRegimeLine'}
-                  concept={'otherLineConcept'}
+                  concept={'CI0060002AAAAAAAAAAAAAAAAAAAAAAAAAAA'}
                   placeholder=".........................................................................."
                   variant={'unstyled'}
                 />
@@ -275,7 +279,7 @@ export function OrderForm({
             <ObsInput
               form={form}
               name={'regime'}
-              concept={'regime'}
+              concept={'CI0060003AAAAAAAAAAAAAAAAAAAAAAAAAAA'}
               data={regimenList}
               type={'select'}
               placeholder={'.........................................'}
@@ -311,7 +315,7 @@ export function OrderForm({
                 </Text>
                 <Radio
                   // label={'CV contrôle sous ARV'}
-                  value={'163523AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'}
+                  value={'160569AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'}
                 />
                 <Space />
                 <Text size={'sm'} pb={5}>
@@ -329,7 +333,7 @@ export function OrderForm({
                   }
                   concept={'CI0050001AAAAAAAAAAAAAAAAAAAAAAAAAAA'}
                   form={form}
-                  name={''}
+                  name={'otherCVReason'}
                 />
               </Group>
               <Group>
@@ -362,7 +366,7 @@ export function OrderForm({
                 <ObsInput
                   form={form}
                   name={'initialCd4Absolute'}
-                  concept={'164429AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'}
+                  concept={'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA001'}
                   variant="unstyled"
                   placeholder={'.........................................'}
                 />
@@ -372,7 +376,7 @@ export function OrderForm({
                 <ObsInput
                   form={form}
                   name={'initialCd4Percentage'}
-                  concept={'164430AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'}
+                  concept={'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA002'}
                   variant="unstyled"
                   placeholder={'.........................................'}
                 />
@@ -382,7 +386,7 @@ export function OrderForm({
                 <ObsInput
                   form={form}
                   name={'initialCd4Date'}
-                  concept={'initialCd4DateConcept'}
+                  concept={'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIII'}
                   variant="unstyled"
                   placeholder={'__/__/____'}
                   type={'date'}
@@ -398,7 +402,7 @@ export function OrderForm({
                 <ObsInput
                   form={form}
                   name={'latestCd4Absolute'}
-                  concept={'latestCd4ValueConcept'}
+                  concept={'5497AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'}
                   variant="unstyled"
                   placeholder={'.........................................'}
                 />
@@ -407,8 +411,8 @@ export function OrderForm({
                 <Text size={'sm'}>CD4 pourcentage :</Text>
                 <ObsInput
                   form={form}
-                  name={'latestCd4Percent'}
-                  concept={'latestCd4PercentConcept'}
+                  name={'latestCd4Percentage'}
+                  concept={'730AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'}
                   variant="unstyled"
                   placeholder={'.........................................'}
                 />
@@ -433,7 +437,7 @@ export function OrderForm({
             <ObsInput
               form={form}
               name={'hasViralLoad'}
-              concept={'hasViralLoadConcept'}
+              concept={'CI0050004AAAAAAAAAAAAAAAAAAAAAAAAAAA'}
               variant="unstyled"
               type={'radio'}
             >
@@ -441,11 +445,11 @@ export function OrderForm({
                 <Text size={'sm'} pb={'xs'}>
                   Oui :{' '}
                 </Text>
-                <Radio value={'oui'} />
+                <Radio value={'1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'} />
                 <Text size={'sm'} pb={'xs'}>
                   Non :{' '}
                 </Text>
-                <Radio value={'non'} />
+                <Radio value={'1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'} />
               </Group>
             </ObsInput>
           </Group>
@@ -467,7 +471,7 @@ export function OrderForm({
             <ObsInput
               form={form}
               name={'latestViralLoadDate'}
-              concept={'163281AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'}
+              concept={'CI0050005AAAAAAAAAAAAAAAAAAAAAAAAAAA'}
               variant="unstyled"
               placeholder={'__/__/____'}
               type={'date'}
@@ -501,7 +505,7 @@ export function OrderForm({
                     <Group mb={'xs'}>
                       <Text size={'sm'}>Date de la demande de l'analyse</Text>
                       <ObsInput
-                        concept={'CI0050005AAAAAAAAAAAAAAAAAAAAAAAAAA'}
+                        concept={'CI0050006AAAAAAAAAAAAAAAAAAAAAAAAAAA'}
                         variant="unstyled"
                         placeholder={'__/__/____'}
                         form={form}
@@ -548,7 +552,7 @@ export function OrderForm({
                         concept={'CI0050007AAAAAAAAAAAAAAAAAAAAAAAAAAA'}
                         data={[
                           {
-                            value: 'CI0050008AAAAAAAAAAAAAAAAAAAAAAAAAAA',
+                            value: '1002AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
                             label: 'Plasma',
                           },
                           {
@@ -568,9 +572,11 @@ export function OrderForm({
           <Group position="center" p={'xs'}>
             <Button type={'submit'}>Enregistrer</Button>
           </Group>
-          {/* {JSON.stringify(form.values)} */}
+          {JSON.stringify(form.values.encounter)}  
         </Container>
+        </>
       )}
+      
     </form>
   );
 }
