@@ -141,7 +141,7 @@ export function OrderForm({
             <Space />
             <ObsInput
               type="radio"
-              concept="CI0030001AAAAAAAAAAAAAAAAAAAAAAAAAAA"
+              concept="163623AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
               form={form}
               name={'hivType'}
             >
@@ -149,49 +149,19 @@ export function OrderForm({
                 <Text size={'sm'} pb={'xs'}>
                   VIH-1 :
                 </Text>
-                <Radio value={'CI0030002AAAAAAAAAAAAAAAAAAAAAAAAAAA'} />
-              </Group>
-            </ObsInput>
-            {/* <Text size={'sm'}>VIH-1 : </Text>
-            {patient.person.gender === 'M' ? <IconCircleX /> : <IconCircle />} */}
-            <Space />
-            <Space />
-            <Space />
+                <Radio value={'164450AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'} />
 
-            <ObsInput
-              type="radio"
-              concept="CI0030001AAAAAAAAAAAAAAAAAAAAAAAAAAA"
-              form={form}
-              name={'hivType'}
-            >
-              <Group>
                 <Text size={'sm'} pb={'xs'}>
                   VIH-2 :
                 </Text>
-                <Radio value={'CI0030003AAAAAAAAAAAAAAAAAAAAAAAAAAA'} />
-              </Group>
-            </ObsInput>
-            {/* <Text size={'sm'}>VIH-2 : </Text>
-            {patient.person.gender === 'M' ? <IconCircleX /> : <IconCircle />} */}
-            <Space />
-            <Space />
-            <Space />
+                <Radio value={'164451AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'} />
 
-            <ObsInput
-              type="radio"
-              concept="CI0030001AAAAAAAAAAAAAAAAAAAAAAAAAAA"
-              form={form}
-              name={'hivType'}
-            >
-              <Group>
                 <Text size={'sm'} pb={'xs'}>
                   VIH-1 et VIH-2 :{' '}
                 </Text>
-                <Radio value={'CI0030004AAAAAAAAAAAAAAAAAAAAAAAAAAA'} />
+                <Radio value={'164452AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'} />
               </Group>
             </ObsInput>
-            {/* <Text size={'sm'}>VIH-1 et VIH-2 : </Text>
-            {patient.person.gender === 'M' ? <IconCircleX /> : <IconCircle />} */}
           </Group>
           <Group>
             <Text size={'sm'}>Le patient est-il actuellement sous ARV ?</Text>
@@ -279,7 +249,7 @@ export function OrderForm({
             <ObsInput
               form={form}
               name={'regime'}
-              concept={'CI0060003AAAAAAAAAAAAAAAAAAAAAAAAAAA'}
+              concept={'162240AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'}
               data={regimenList}
               type={'select'}
               placeholder={'.........................................'}
@@ -378,6 +348,7 @@ export function OrderForm({
                   concept={'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA002'}
                   variant="unstyled"
                   placeholder={'.........................................'}
+                  
                 />
               </Group>
               <Group>
@@ -571,7 +542,7 @@ export function OrderForm({
           <Group position="center" p={'xs'}>
             <Button type={'submit'}>Enregistrer</Button>
           </Group>
-          {JSON.stringify(form.values.encounter)}  
+          {/* {JSON.stringify(form.values.encounter)}   */}
         </Container>
         </>
       )}

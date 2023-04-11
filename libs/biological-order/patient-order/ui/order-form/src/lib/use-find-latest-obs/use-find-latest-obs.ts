@@ -36,7 +36,7 @@ export const useFindLatestObs = (
   const { obs: initialCd4AbsoluteObs, isLoading: loadingInitialCd4Absolute } =
     useFindObs(
       patient,
-      '164429AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+      'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA001',
       `&encounterType=${EncounterType.ENROLLMENT}&location=${location}&date=${lastDate}`,
       view
     );
@@ -51,7 +51,7 @@ export const useFindLatestObs = (
     isLoading: loadingInitialCd4Percentage,
   } = useFindObs(
     patient,
-    '164430AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+    'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA002',
     `&encounterType=${EncounterType.ENROLLMENT}&location=${location}&date=${lastDate}`,
     view
   );
