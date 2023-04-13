@@ -13,11 +13,13 @@ export const EncounterRole = {
 const FOLLOWUP_VISIT = '8d5b2be0-c2cc-11de-8d13-0010c6dffd0f';
 const BIOLOGICAL_EXAM = 'b2750363-7c00-4ece-bceb-47ab09b8d21b';
 const ENROLLMENT = '8d5b27bc-c2cc-11de-8d13-0010c6dffd0f';
+const REQUEST_EXAM = 'DEMANDEEXAMENEEEEEEEEEEEEEEEEEEEEEEEEE'
 
 export const EncounterType = {
   FOLLOWUP_VISIT,
   BIOLOGICAL_EXAM,
   ENROLLMENT,
+  REQUEST_EXAM
 };
 
 const HIV = '6b6e9d94-015b-48f6-ac95-da239512ff91';

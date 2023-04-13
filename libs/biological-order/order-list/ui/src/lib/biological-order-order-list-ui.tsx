@@ -10,16 +10,20 @@ import PatientSearchForm from './patient-search-form/patient-search-form';
 /* eslint-disable-next-line */
 export interface BiologicalOrderOrderListUiProps {
   orders: Encounter[];
-  filterList: (startDate: Date, endDate: Date) => void;
+  setFilterList: (startDate: Date, endDate: Date) => void;
   setIdentifier: (identifier: string) => void;
   setParams: (params: string) => void;
+  setStartDate : (startDate : string) => void;
+  setEndDate : (endDate : string) => void;
   patientId?: string;
 }
 
 export function BiologicalOrderOrderListUi({
   orders,
   // setIdentifier,
-  filterList,
+  setStartDate ,
+  setEndDate ,
+  setFilterList,
   patientId,
   setParams,
 }: BiologicalOrderOrderListUiProps) {
@@ -70,8 +74,8 @@ export function BiologicalOrderOrderListUi({
           </Group>
           <Divider my={'xs'} />
           <Paper withBorder m={'xs'}>
-            <OrderListFilterForm setParams={setParams} />
-            <OrderListTable orders={[]} />
+            <OrderListFilterForm setParams={setParams} setStartDate={setStartDate} setEndDate={setEndDate} />
+            <OrderListTable orders={orders} />
           </Paper>
         </Paper>
       </Container>

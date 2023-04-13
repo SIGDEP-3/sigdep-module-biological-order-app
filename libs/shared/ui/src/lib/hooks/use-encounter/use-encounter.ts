@@ -92,8 +92,8 @@ export const useFindFilteredEncounter = (
 export const useFindAllEncounters = (
   // patient: string,
   encounterType: string,
-  startDate: string,
-  endDate: string,
+  fromdate: string,
+  todate: string,
   params = 'default',
   limit = '10',
   enabled = false
@@ -103,12 +103,12 @@ export const useFindAllEncounters = (
     refetch: findAllEncounters,
     isLoading,
   } = useQuery(
-    [encounterType, startDate, endDate, params, limit],
+    [encounterType, fromdate, todate, params, limit],
     async () =>
       await EncounterService.findAll(
         encounterType,
-        startDate,
-        endDate,
+        fromdate,
+        todate,
         params,
         limit
       ),

@@ -19,6 +19,7 @@ import {
   getPaginationRowModel,
   flexRender,
   useReactTable,
+  FilterFn
 } from '@tanstack/react-table';
 import {
   IconChevronLeft,
@@ -108,7 +109,13 @@ export const CustomTable = ({
       getFilteredRowModel: getFilteredRowModel(),
       getPaginationRowModel: pagination ? getPaginationRowModel() : undefined,
       getSortedRowModel: getSortedRowModel(),
-      state: initialState,
+     // state: initialState,
+     state: {
+      globalFilter : globalFilter,
+      columnVisibility: { uuid: false, patient: false },
+      },
+ 
+
       //
       debugTable: true,
       // initialState,

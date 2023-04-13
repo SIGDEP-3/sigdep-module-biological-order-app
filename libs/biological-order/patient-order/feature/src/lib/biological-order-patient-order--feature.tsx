@@ -15,6 +15,7 @@ import { BiologicalOrderPatientOrderUiOrderResult } from '@spbogui-openmrs/biolo
 import { BiologicalOrderPatientOrderUiPatientHome } from '@spbogui-openmrs/biological-order/patient-order/ui/patient-home';
 import {
   useFindFilteredEncounter,
+  useFindAllEncounters,
   useFindOnePatient,
 } from '@spbogui-openmrs/shared/ui';
 import {
@@ -40,6 +41,7 @@ export function BiologicalOrderPatientOrderFeature(
   );
 
   const { patient } = useFindOnePatient(patientId, 'full', true);
+  const {encounters } = useFindAllEncounters(EncounterType.REQUEST_EXAM ,"2010-01-01" ,"9999-12-12" ,customEncounterParams ,'100' ,true)
   // const { encounter: latestCd4 } = useFindFilteredEncounter(
   //   patientId,
   //   EncounterType.BIOLOGICAL_EXAM,
@@ -140,7 +142,7 @@ export function BiologicalOrderPatientOrderFeature(
                 Liste des demandes du patient
               </Text>
               <Divider mb={'xs'} />
-              <PatientOrderListTable orders={[]} />
+              <PatientOrderListTable orders={encounters} />
             </Paper>
           </Paper>
         </Grid.Col>

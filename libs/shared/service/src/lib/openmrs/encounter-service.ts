@@ -33,7 +33,7 @@ const findAll = async (
   limit = '1'
 ): Promise<Encounter[]> => {
   const response = await api.get<any>(
-    `/encounter?&type=${encounterType}&startDate=${startDate}&endDate=${endDate}&v=${params}&limit=${limit}`
+    `/encounter?encounterType=${encounterType}&startDate=${startDate}&endDate=${endDate}&v=${params}&limit=${limit}`
   );
   return response.data.results;
 };

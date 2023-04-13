@@ -25,6 +25,17 @@ const cols: ColumnDef<Encounter>[] = [
     accessorFn: (data) => data.patient.uuid,
   },
   {
+    id: 'names',
+    header: 'Name',
+    accessorFn: (data) => data.patient.person.names[0].givenName + " "+  data.patient.person.names[0].familyName,
+  },
+  {
+    id: 'identifier',
+    header: 'Numéro du patient',
+    accessorFn: (data) => data.patient.identifiers[0]?.identifier,
+   // cell: ({ getValue }) => <Text size={'sm'}>{getValue<string>()}</Text>,
+  },
+  {
     id: 'orderDate',
     header: 'Date de la demande',
     accessorFn: (data) => data.encounterDatetime,
@@ -37,15 +48,9 @@ const cols: ColumnDef<Encounter>[] = [
     },
   },
   {
-    id: 'identifier',
-    header: 'Numéro du patient',
-    accessorFn: (data) => data.patient.identifiers[0]?.identifier,
-    cell: ({ getValue }) => <Text size={'sm'}>{getValue<string>()}</Text>,
-  },
-  {
     id: 'status',
     header: 'Statut de la demande',
-    accessorFn: (data) => data.obs.find((o) => o.concept.uuid === ''),
+    accessorFn: (data) => data.obs.find((o) => o.concept.uuid === '5497AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'),
     cell: ({ getValue }) => (
       <Text size={'sm'}>{getValue<string>() && getValue<Obs>().value}</Text>
     ),
@@ -53,7 +58,7 @@ const cols: ColumnDef<Encounter>[] = [
   {
     id: 'statusDate',
     header: 'Date du statut',
-    accessorFn: (data) => data.obs.find((o) => o.concept.uuid === ''),
+    accessorFn: (data) => data.obs.find((o) => o.concept.uuid === '160103AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'),
     cell: ({ getValue }) => (
       <Text size={'sm'}>{getValue<string>() && getValue<Obs>().value}</Text>
     ),
