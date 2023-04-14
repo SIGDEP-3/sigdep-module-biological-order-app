@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Group, Text, Button } from '@mantine/core';
-import { Encounter, Obs } from '@spbogui-openmrs/shared/model';
+import { Group, Text, Button ,Space } from '@mantine/core';
+import { Encounter, Obs ,Provider} from '@spbogui-openmrs/shared/model';
 import { CustomTable } from '@spbogui-openmrs/shared/ui';
 import { IconEye } from '@tabler/icons';
 import dayjs from 'dayjs';
@@ -33,7 +33,6 @@ const cols: ColumnDef<Encounter>[] = [
     id: 'identifier',
     header: 'Numéro du patient',
     accessorFn: (data) => data.patient.identifiers[0]?.identifier,
-   // cell: ({ getValue }) => <Text size={'sm'}>{getValue<string>()}</Text>,
   },
   {
     id: 'orderDate',
@@ -50,17 +49,25 @@ const cols: ColumnDef<Encounter>[] = [
   {
     id: 'status',
     header: 'Statut de la demande',
-    accessorFn: (data) => data.obs.find((o) => o.concept.uuid === '5497AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'),
-    cell: ({ getValue }) => (
-      <Text size={'sm'}>{getValue<string>() && getValue<Obs>().value}</Text>
-    ),
+    accessorFn: (data) => data.obs.find((o) => o.concept.uuid === '856AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')?.value?"Completed" :"In Progress",
+    // cell: ({ getValue }) => (
+    //   <Text size={'sm'}>{ getValue<Obs>().value?"Completed":"In Progress" }</Text>
+    // ),
   },
   {
-    id: 'statusDate',
-    header: 'Date du statut',
-    accessorFn: (data) => data.obs.find((o) => o.concept.uuid === '160103AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'),
+    id: 'regime',
+    header: 'Regime',
+    accessorFn: (data) => data.obs.find((o) => o.concept.uuid === '162240AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')?.display,
+    // cell: ({ getValue }) => (
+    //   <Text size={'sm'}>{ getValue<Obs>().value?"Completed":"In Progress" }</Text>
+    // ),
+  },
+  {
+    id: 'provider',
+    header: 'Prescripteur',
+    accessorFn: (data) => data.encounterProviders.find((e) => e.encounterRole.uuid === 'CLINICIANRRRRRRRRRRRRRRRRRRRRRRRRRRRRR')?.provider,
     cell: ({ getValue }) => (
-      <Text size={'sm'}>{getValue<string>() && getValue<Obs>().value}</Text>
+      <Text size={'sm'}>{getValue<string>() && getValue<Provider>().person.names[0].familyName} {getValue<string>() && getValue<Provider>().person.names[0].givenName}</Text>
     ),
   },
   {

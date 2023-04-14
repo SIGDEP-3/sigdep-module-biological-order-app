@@ -26,6 +26,7 @@ import { IconCalendar, IconList, IconPlus, IconPrinter } from '@tabler/icons';
 import invariant from 'invariant';
 import { Link, Route, Routes, useParams } from 'react-router-dom';
 import PatientOrderListTable from './patient-order-list-table/patient-order-list-table';
+import { useEffect } from 'react';
 
 /* eslint-disable-next-line */
 export interface BiologicalOrderPatientOrderFeatureProps {}
@@ -36,12 +37,14 @@ export function BiologicalOrderPatientOrderFeature(
   const { patientId } = useParams();
   invariant(patientId, '');
 
+
   const [requestDate, setRequestDate] = useInputState<Date | undefined>(
     undefined
   );
 
   const { patient } = useFindOnePatient(patientId, 'full', true);
-  const {encounters } = useFindAllEncounters(EncounterType.REQUEST_EXAM ,"2010-01-01" ,"9999-12-12" ,customEncounterParams ,'100' ,true)
+  //const {encounters } = useFindAllEncounters(EncounterType.REQUEST_EXAM ,"2010-01-01" ,"9999-12-12" ,customEncounterParams ,'100' ,true)
+  const {encounter } = useFindFilteredEncounter(patientId ,EncounterType.REQUEST_EXAM ,customEncounterParams ,'' ,'' ,true)
   // const { encounter: latestCd4 } = useFindFilteredEncounter(
   //   patientId,
   //   EncounterType.BIOLOGICAL_EXAM,
@@ -142,7 +145,7 @@ export function BiologicalOrderPatientOrderFeature(
                 Liste des demandes du patient
               </Text>
               <Divider mb={'xs'} />
-              <PatientOrderListTable orders={encounters} />
+              <PatientOrderListTable orders={encounter} />
             </Paper>
           </Paper>
         </Grid.Col>

@@ -43,27 +43,27 @@ const cols: ColumnDef<Encounter>[] = [
   {
     id: 'reason',
     header: 'Motif de la demande',
-    accessorFn: (data) => data.obs.find((o) => o.concept.uuid === '99920cb9-952f-44ae-a212-e348bc8ef43e'),
+    accessorFn: (data) => data.obs.find((o) => o.concept.uuid === 'CI0050002AAAAAAAAAAAAAAAAAAAAAAAAAAA'),
     cell: ({ getValue }) => (
       <Text size={'sm'}>{getValue<string>() && getValue<Obs>().display}</Text>
     ),
   },
   {
     id: 'status',
-    header: 'Statut',
-    accessorFn: (data) => data.obs.find((o) => o.concept.uuid === ''),
-    cell: ({ getValue }) => (
-      <Text size={'sm'}>{getValue<string>() && getValue<Obs>().value}</Text>
-    ),
+    header: 'Statut de la demande',
+    accessorFn: (data) => data.obs.find((o) => o.concept.uuid === '856AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')?.value?"Completed" :"In Progress",
+    // cell: ({ getValue }) => (
+    //   <Text size={'sm'}>{ getValue<Obs>().value?"Completed":"In Progress" }</Text>
+    // ),
   },
-  {
-    id: 'statusDate',
-    header: 'Date du statut',
-    accessorFn: (data) => data.obs.find((o) => o.concept.uuid === '88b7988b-8904-4a20-9e18-604376ecc6db'),
-    cell: ({ getValue }) => (
-      <Text size={'sm'}>{getValue<string>() && getValue<Obs>().value}</Text>
-    ),
-  },
+  // {
+  //   id: 'statusDate',
+  //   header: 'Date du statut',
+  //   accessorFn: (data) => data.obs.find((o) => o.concept.uuid === '88b7988b-8904-4a20-9e18-604376ecc6db'),
+  //   cell: ({ getValue }) => (
+  //     <Text size={'sm'}>{getValue<string>() && getValue<Obs>().value}</Text>
+  //   ),
+  // },
   {
     id: 'menu',
     header: '',
