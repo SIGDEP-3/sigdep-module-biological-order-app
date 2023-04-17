@@ -79,10 +79,7 @@ export const encounterSchema = Joi.object<EncounterForm>({
   encounterDatetime: Joi.date()
     .required()
     .messages({ 'any.required': 'Ce champ est requis' }),
-  location: Joi.string().required().messages({
-    'string.empty': 'La structure est requise',
-    'string.required': 'La structure est requise',
-  }),
+  location: Joi.optional(),
   encounterType: Joi.string().required().messages({
     'string.empty': 'Ce champ est requise',
     'string.required': 'Ce champ est requise',

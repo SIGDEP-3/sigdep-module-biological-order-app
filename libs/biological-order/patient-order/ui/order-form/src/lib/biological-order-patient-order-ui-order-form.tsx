@@ -44,7 +44,7 @@ export function BiologicalOrderPatientOrderUiOrderForm({
   );
   const form = useForm<OrderFormType>({
     initialValues: ORDER_FORM_INITIAL_VALUE,
-   // validate: joiResolver(orderFormSchema),
+    validate: joiResolver(orderFormSchema) ,
   });
 
   const {

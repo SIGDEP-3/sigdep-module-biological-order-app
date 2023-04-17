@@ -49,7 +49,7 @@ const cols: ColumnDef<Encounter>[] = [
   {
     id: 'status',
     header: 'Statut de la demande',
-    accessorFn: (data) => data.obs.find((o) => o.concept.uuid === '856AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')?.value?"Completed" :"In Progress",
+    accessorFn: (data) => data.obs.find((o) => o.concept.uuid === '856AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')?.value?"Complété" :"En cours",
     // cell: ({ getValue }) => (
     //   <Text size={'sm'}>{ getValue<Obs>().value?"Completed":"In Progress" }</Text>
     // ),

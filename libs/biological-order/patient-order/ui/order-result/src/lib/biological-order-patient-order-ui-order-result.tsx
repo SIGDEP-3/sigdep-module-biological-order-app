@@ -28,8 +28,8 @@ export function BiologicalOrderPatientOrderUiOrderResult(
 
   return (
     <div>
-      <h1>Order Results</h1>
-      {obs?obs.value: "No Value Yet"}
+      <h1>Résultats de la commande</h1>
+      {obs?obs.value: "Aucune valeur Oui"}
     </div>
   );
 }

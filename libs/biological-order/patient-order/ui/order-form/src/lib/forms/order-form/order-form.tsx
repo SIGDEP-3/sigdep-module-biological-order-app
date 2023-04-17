@@ -53,6 +53,7 @@ export function OrderForm({
 }: OrderFormProps) {
   const { classes } = styles();
   const theme = useMantineTheme();
+  const currentDate = new Date(); 
   return (
     <form onSubmit={form.onSubmit(handleSubmit)}>
       {patient && (
@@ -290,7 +291,7 @@ export function OrderForm({
                 />
                 <Space />
                 <Text size={'sm'} pb={5}>
-                Échec immunologique
+                  Échec immunologique
                 </Text>    
                 <Radio
                   // label={'CV contrôle sous ARV'}
@@ -504,6 +505,7 @@ export function OrderForm({
                         icon={<IconCalendar />}
                         locale="fr"
                         inputFormat="DD/MM/YYYY"
+                        maxDate={currentDate}
                         placeholder={'__/__/____'}
                         {...form.getInputProps('encounter.encounterDatetime')}
                       />
@@ -542,7 +544,8 @@ export function OrderForm({
           <Group position="center" p={'xs'}>
             <Button type={'submit'}>Enregistrer</Button>
           </Group>
-          {/* {JSON.stringify(form.values.encounter)}   */}
+          {JSON.stringify(form.values.encounter)}  
+          {/* {JSON.stringify(form.errors)}   */}
         </Container>
         </>
       )}
