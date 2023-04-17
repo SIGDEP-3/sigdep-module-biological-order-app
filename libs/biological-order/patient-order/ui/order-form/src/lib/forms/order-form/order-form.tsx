@@ -544,7 +544,7 @@ export function OrderForm({
           <Group position="center" p={'xs'}>
             <Button type={'submit'}>Enregistrer</Button>
           </Group>
-          {JSON.stringify(form.values.encounter)}  
+          {/* {JSON.stringify(form.values.encounter)}   */}
           {/* {JSON.stringify(form.errors)}   */}
         </Container>
         </>
