@@ -1,8 +1,8 @@
 export const ENCOUNTER_PROVIDER_DEFAULT =
   '738185ba-eac9-11e5-8f4d-e06995eac916';
 const DEFAULT_ROLE = 'a0b03050-c99b-11e0-9572-0800200c9a66';
-const CLINICIAN = 'CLINICIANRRRRRRRRRRRRRRRRRRRRRRRRRRRRR';
-const COLLECTOR = 'COLLECTORRRRRRRRRRRRRRRRRRRRRRRRRRRRRR';
+const CLINICIAN = 'd67a9eba-2ddd-42b5-814c-b39836536cce';
+const COLLECTOR = '3eae50dd-86a4-4b1e-a5de-65a4fd22c28c';
 
 export const EncounterRole = {
   DEFAULT_ROLE,
@@ -13,7 +13,7 @@ export const EncounterRole = {
 const FOLLOWUP_VISIT = '8d5b2be0-c2cc-11de-8d13-0010c6dffd0f';
 const BIOLOGICAL_EXAM = 'b2750363-7c00-4ece-bceb-47ab09b8d21b';
 const ENROLLMENT = '8d5b27bc-c2cc-11de-8d13-0010c6dffd0f';
-const REQUEST_EXAM = 'DEMANDEEXAMENEEEEEEEEEEEEEEEEEEEEEEEEE'
+const REQUEST_EXAM = '8b51ec84-de51-4090-bcde-b6862dc0e253'
 
 export const EncounterType = {
   FOLLOWUP_VISIT,

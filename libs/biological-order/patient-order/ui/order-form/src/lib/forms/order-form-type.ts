@@ -6,6 +6,7 @@ import {
   orderSchema,
   ORDER_INITIAL_VALUE,
 } from '@spbogui-openmrs/shared/model';
+import { EncounterRole ,EncounterType } from '@spbogui-openmrs/shared/utils';
 import Joi from 'joi';
 
 export interface OrderFormType {
@@ -79,10 +80,10 @@ export const ORDER_FORM_INITIAL_VALUE: OrderFormType = {
   encounter: {
     ...ENCOUNTER_INITIAL_VALUES,
     encounterProviders: [
-      { encounterRole: 'CLINICIANRRRRRRRRRRRRRRRRRRRRRRRRRRRRR', provider: '' },
-      { encounterRole: 'COLLECTORRRRRRRRRRRRRRRRRRRRRRRRRRRRRR', provider: '' },
+      { encounterRole: EncounterRole.CLINICIAN, provider: '' },
+      { encounterRole: EncounterRole.COLLECTOR, provider: '' },
     ],
-    encounterType: 'DEMANDEEXAMENEEEEEEEEEEEEEEEEEEEEEEEEE',
+    encounterType: EncounterType.REQUEST_EXAM,
   },
   order: {
     ...ORDER_INITIAL_VALUE,

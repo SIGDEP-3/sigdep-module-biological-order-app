@@ -25,6 +25,7 @@ import { notification } from '@spbogui-openmrs/shared/utils';
 import { useFindLatestObs } from './use-find-latest-obs/use-find-latest-obs';
 import dayjs from 'dayjs';
 import { useNavigate } from 'react-router-dom';
+import { EncounterRole} from '@spbogui-openmrs/shared/utils';
 
 /* eslint-disable-next-line */
 export interface BiologicalOrderPatientOrderUiOrderFormProps {
@@ -126,8 +127,7 @@ export function BiologicalOrderPatientOrderUiOrderForm({
                 order.encounter = data.uuid;
                 const orderer = form.values.encounter.encounterProviders.find(
                   (e) =>
-                    e.encounterRole ===
-                    'CLINICIANRRRRRRRRRRRRRRRRRRRRRRRRRRRRR'
+                    e.encounterRole === EncounterRole.CLINICIAN
                 );
                 order.orderer = orderer ? orderer.provider : '';
                 saveOrder(order, {

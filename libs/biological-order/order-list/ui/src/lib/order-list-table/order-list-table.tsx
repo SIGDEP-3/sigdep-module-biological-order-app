@@ -7,6 +7,7 @@ import dayjs from 'dayjs';
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ColumnDef } from '@tanstack/react-table';
+import { EncounterRole} from '@spbogui-openmrs/shared/utils';
 
 /* eslint-disable-next-line */
 export interface OrderListTableProps {
@@ -65,7 +66,7 @@ const cols: ColumnDef<Encounter>[] = [
   {
     id: 'provider',
     header: 'Prescripteur',
-    accessorFn: (data) => data.encounterProviders.find((e) => e.encounterRole.uuid === 'CLINICIANRRRRRRRRRRRRRRRRRRRRRRRRRRRRR')?.provider,
+    accessorFn: (data) => data.encounterProviders.find((e) => e.encounterRole.uuid === EncounterRole.CLINICIAN)?.provider,
     cell: ({ getValue }) => (
       <Text size={'sm'}>{getValue<string>() && getValue<Provider>().person.names[0].familyName} {getValue<string>() && getValue<Provider>().person.names[0].givenName}</Text>
     ),
