@@ -6,7 +6,7 @@ import {
 } from '@spbogui-openmrs/shared/ui';
 
 import {
-  customEncounterParams
+  customEncounterParams ,Concepts
 } from '@spbogui-openmrs/shared/utils';
 
 /* eslint-disable-next-line */
@@ -21,7 +21,7 @@ export function BiologicalOrderPatientOrderUiOrderResult(
 
   const {encounter} = useFindEncounter(requestId ,customEncounterParams ,true);
 
-  const obs = encounter?.obs.find((o) => o.concept.uuid === '856AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+  const obs = encounter?.obs.find((o) => o.concept.uuid === Concepts.HIV_VIRAL_LOAD_TEST);
   useEffect(() => {
     console.log(requestId)
   } ,[patientId ,requestId])

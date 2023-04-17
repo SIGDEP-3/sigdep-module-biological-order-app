@@ -6,6 +6,7 @@ import { IconEye } from '@tabler/icons';
 import { Link } from 'react-router-dom';
 import { useMemo } from 'react';
 import { CustomTable } from '@spbogui-openmrs/shared/ui';
+import { Concepts } from '@spbogui-openmrs/shared/utils';
 
 /* eslint-disable-next-line */
 export interface PatientOrderListTableProps {
@@ -43,7 +44,7 @@ const cols: ColumnDef<Encounter>[] = [
   {
     id: 'reason',
     header: 'Motif de la demande',
-    accessorFn: (data) => data.obs.find((o) => o.concept.uuid === 'CI0050002AAAAAAAAAAAAAAAAAAAAAAAAAAA'),
+    accessorFn: (data) => data.obs.find((o) => o.concept.uuid === Concepts.REASON_FOR_VIRAL_LOAD_REQUEST),
     cell: ({ getValue }) => (
       <Text size={'sm'}>{getValue<string>() && getValue<Obs>().display}</Text>
     ),
@@ -51,7 +52,7 @@ const cols: ColumnDef<Encounter>[] = [
   {
     id: 'status',
     header: 'Statut de la demande',
-    accessorFn: (data) => data.obs.find((o) => o.concept.uuid === '856AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')?.value?"Completed" :"In Progress",
+    accessorFn: (data) => data.obs.find((o) => o.concept.uuid === Concepts.HIV_VIRAL_LOAD_TEST)?.value?"Completed" :"In Progress",
     // cell: ({ getValue }) => (
     //   <Text size={'sm'}>{ getValue<Obs>().value?"Completed":"In Progress" }</Text>
     // ),

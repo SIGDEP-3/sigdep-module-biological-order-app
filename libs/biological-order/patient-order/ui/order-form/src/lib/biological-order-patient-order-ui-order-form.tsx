@@ -25,7 +25,7 @@ import { notification } from '@spbogui-openmrs/shared/utils';
 import { useFindLatestObs } from './use-find-latest-obs/use-find-latest-obs';
 import dayjs from 'dayjs';
 import { useNavigate } from 'react-router-dom';
-import { EncounterRole} from '@spbogui-openmrs/shared/utils';
+import { EncounterRole , Concepts} from '@spbogui-openmrs/shared/utils';
 
 /* eslint-disable-next-line */
 export interface BiologicalOrderPatientOrderUiOrderFormProps {
@@ -73,7 +73,7 @@ export function BiologicalOrderPatientOrderUiOrderForm({
   );
 
   const { concept, isLoading } = useFindConcept(
-    '162240AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+    Concepts.ARV_REGIMEN,
     'custom:(answers:(display,uuid))'
   );
 

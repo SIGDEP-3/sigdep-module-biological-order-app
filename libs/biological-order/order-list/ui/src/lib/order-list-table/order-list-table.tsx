@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ColumnDef } from '@tanstack/react-table';
-import { EncounterRole} from '@spbogui-openmrs/shared/utils';
+import { EncounterRole ,Concepts} from '@spbogui-openmrs/shared/utils';
 
 /* eslint-disable-next-line */
 export interface OrderListTableProps {
@@ -50,7 +50,7 @@ const cols: ColumnDef<Encounter>[] = [
   {
     id: 'status',
     header: 'Statut de la demande',
-    accessorFn: (data) => data.obs.find((o) => o.concept.uuid === '856AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')?.value?"Complété" :"En cours",
+    accessorFn: (data) => data.obs.find((o) => o.concept.uuid === Concepts.HIV_VIRAL_LOAD_TEST)?.value?"Complété" :"En cours",
     // cell: ({ getValue }) => (
     //   <Text size={'sm'}>{ getValue<Obs>().value?"Completed":"In Progress" }</Text>
     // ),
@@ -58,7 +58,7 @@ const cols: ColumnDef<Encounter>[] = [
   {
     id: 'regime',
     header: 'Regime',
-    accessorFn: (data) => data.obs.find((o) => o.concept.uuid === '162240AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')?.display,
+    accessorFn: (data) => data.obs.find((o) => o.concept.uuid === Concepts.ARV_REGIMEN)?.display,
     // cell: ({ getValue }) => (
     //   <Text size={'sm'}>{ getValue<Obs>().value?"Completed":"In Progress" }</Text>
     // ),

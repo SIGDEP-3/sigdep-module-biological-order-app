@@ -6,7 +6,7 @@ import {
   orderSchema,
   ORDER_INITIAL_VALUE,
 } from '@spbogui-openmrs/shared/model';
-import { EncounterRole ,EncounterType } from '@spbogui-openmrs/shared/utils';
+import { EncounterRole ,EncounterType ,Concepts} from '@spbogui-openmrs/shared/utils';
 import Joi from 'joi';
 
 export interface OrderFormType {
@@ -33,7 +33,7 @@ export interface OrderFormType {
   latestViralLoadDate?: Date;
   requestDate?: Date;
   collectionType: string;
-  otherRegimeLine?: string;
+ // otherRegimeLine?: string;
 }
 
 
@@ -72,8 +72,8 @@ export const orderFormSchema = Joi.object<OrderFormType>({
     .messages({ 'any.required': 'La date de la demande est requise' }),
   collectionType: Joi.string()
     .required()
-    .messages({ 'string.empty': 'Le type de prélèvement est requis' }),
-  otherRegimeLine: Joi.optional(),
+    .messages({ 'string.empty': 'Le type de prélèvement est requis' })
+ // otherRegimeLine: Joi.optional(),
 });
 
 export const ORDER_FORM_INITIAL_VALUE: OrderFormType = {
@@ -87,7 +87,7 @@ export const ORDER_FORM_INITIAL_VALUE: OrderFormType = {
   },
   order: {
     ...ORDER_INITIAL_VALUE,
-    concept: '856AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+    concept: Concepts.HIV_VIRAL_LOAD_TEST,
     type: 'testorder',
   },
   requestReason: '',
@@ -108,33 +108,8 @@ export const ORDER_FORM_INITIAL_VALUE: OrderFormType = {
   requestDate: undefined,
   collectionType: '',
   regimeLine: '',
-  otherRegimeLine: '',
+  //otherRegimeLine: '',
   regime: '',
   otherCVReason : ""
 };
 
-export const orderObsRecord: Record<string, string> = {
-  '163623AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA': 'hivType',
-  '5272AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA': 'pregnancyStatus',
-  '5632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA': 'currentlyBreastfeedingChild',
-  CI0060001AAAAAAAAAAAAAAAAAAAAAAAAAAA: 'isOnTreatment',
-  CI0050002AAAAAAAAAAAAAAAAAAAAAAAAAAA: 'requestReason',
-  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA001: 'initialCd4Absolute',
-  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA002: 'initialCd4Percentage',
-  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIII: 'initialCd4Date',
-  '5497AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA': 'latestCd4Absolute',
-  '730AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA': 'latestCd4Percentage',
-  '160103AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA': 'latestCd4Date',
-  '166073AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA': 'regimeLine',
-  CI0060002AAAAAAAAAAAAAAAAAAAAAAAAAAA: 'otherRegimeLine',
-  '162240AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA': 'regime',
-  CI0050004AAAAAAAAAAAAAAAAAAAAAAAAAAA: 'hasViralLoad',
-  CI0050011AAAAAAAAAAAAAAAAAAAAAAAAAAA: 'latestViralLoad',
-  CI0050005AAAAAAAAAAAAAAAAAAAAAAAAAAA: 'latestViralLoadDate',
-  CI0050006AAAAAAAAAAAAAAAAAAAAAAAAAAA: 'requestDate',
-  CI0050007AAAAAAAAAAAAAAAAAAAAAAAAAAA: 'collectionType',
-  CI0050008AAAAAAAAAAAAAAAAAAAAAAAAAAA: 'collectionHour',
-  '164422AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA': 'laboratoryName',
-  CI0050001AAAAAAAAAAAAAAAAAAAAAAAAAAA: 'otherCVReason',
-  CI0060004AAAAAAAAAAAAAAAAAAAAAAAAAAA : 'arvInitialYear'
-};
