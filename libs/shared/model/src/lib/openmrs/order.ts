@@ -21,6 +21,7 @@ export interface CareSetting {
 
 export interface Order {
   display: string;
+  orderNumber: string;
   encounter: Encounter;
   orderType: OrderType;
   action: string;

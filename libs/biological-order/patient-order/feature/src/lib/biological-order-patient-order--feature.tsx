@@ -173,7 +173,7 @@ export function BiologicalOrderPatientOrderFeature(
               />
               <Route
                 path=""
-                element={<BiologicalOrderPatientOrderUiPatientHome />}
+                element={<BiologicalOrderPatientOrderUiPatientHome latestOrder={encounter[0]}/>}
               />
             </Routes>
           </Paper>

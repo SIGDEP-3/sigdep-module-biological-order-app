@@ -20,7 +20,7 @@ const filter = async (
     encounterType !== '' ? `&encounterType=${encounterType}` : '';
   const parameters = params !== '' ? '&' + params : '';
   const response = await api.get<any>(
-    `/encounter?patient=${patient}${encounterTypeParam}&v=${views}${parameters}&limit=${limit}`
+    `/encounter?patient=${patient}${encounterTypeParam}&v=${views}${parameters}&limit=${limit}&sorted=true`
   );
   return response.data.results;
 };

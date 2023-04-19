@@ -3,6 +3,7 @@ import { Location } from './location';
 import { Provider } from './provider';
 import { Patient } from './patient';
 import { Obs, ObsEncounterForm } from './obs';
+import { Order } from './order';
 
 export interface EncounterRole {
   name: string;
@@ -39,7 +40,7 @@ export interface Encounter {
   encounterDatetime: Date;
   obs: Obs[];
   patient: Patient;
-  order?: string[];
+  orders: Order[];
   location: Location;
   encounterType: EncounterType;
   encounterProviders: EncounterProvider[];

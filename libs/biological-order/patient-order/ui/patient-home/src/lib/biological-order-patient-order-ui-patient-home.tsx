@@ -2,13 +2,14 @@ import { Alert, Center, Divider, Paper, Table, Text } from '@mantine/core';
 import { Encounter, Order, Patient } from '@spbogui-openmrs/shared/model';
 import { IconHome } from '@tabler/icons';
 import dayjs from 'dayjs';
+import { Concepts } from '@spbogui-openmrs/shared/utils';
 
 /* eslint-disable-next-line */
 export interface BiologicalOrderPatientOrderUiPatientHomeProps {
   patient?: Patient;
   biologicalExams?: Encounter[];
   latestFollowup?: Encounter;
-  latestOrder?: Order;
+  latestOrder?: Encounter;
 }
 
 export function BiologicalOrderPatientOrderUiPatientHome({
@@ -33,19 +34,20 @@ export function BiologicalOrderPatientOrderUiPatientHome({
         <Text color={'cyan.7'}>Dernière demande de charge virale</Text>
         <Divider color={'cyan.7'} />
 
-        {latestOrder ? (
+        {latestOrder?.orders[0]? (
           <Table>
             <thead>
               <tr>
                 <th>Date</th>
-                <th>Status</th>
-                <th>Date status</th>
+                <th>Statut</th>
+                <th>Numéro de commande</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>{dayjs(latestOrder.dateActivated).format('DD/MM/YYYY')}</td>
-                <td></td>
+                <td>{dayjs(latestOrder.orders[0].dateActivated).format('DD/MM/YYYY')}</td>
+                <td>{latestOrder.obs.find((o) => o.concept.uuid === Concepts.HIV_VIRAL_LOAD_TEST)?.value?"Complété" :"En cours"}</td>
+                <td>{latestOrder.orders[0].orderNumber}</td>
               </tr>
             </tbody>
           </Table>
@@ -59,6 +61,7 @@ export function BiologicalOrderPatientOrderUiPatientHome({
           </Alert>
         )}
       </Paper>
+      {/* {JSON.stringify(latestOrder)} */}
     </Paper>
   );
 }
