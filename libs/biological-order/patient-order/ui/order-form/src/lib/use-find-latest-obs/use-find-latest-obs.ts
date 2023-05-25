@@ -1,5 +1,5 @@
 import { useFindObs } from '@spbogui-openmrs/shared/ui';
-import { EncounterType } from '@spbogui-openmrs/shared/utils';
+import { Concepts } from '@spbogui-openmrs/shared/utils';
 
 export const useFindLatestObs = (
   patient: string,
@@ -11,8 +11,8 @@ export const useFindLatestObs = (
   const { obs: pregnancyStatusObs, isLoading: loadingPregnancyStatus } =
     useFindObs(
       patient,
-      '5272AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
-      `&encounterType=${EncounterType.FOLLOWUP_VISIT}&location=${location}&date=${lastDate}`,
+      Concepts.PREGNANCY_STATUS,
+      ``,
       view
     );
   const pregnancyStatus =
@@ -23,8 +23,8 @@ export const useFindLatestObs = (
     isLoading: loadingCurrentlyBreastfeedingChild,
   } = useFindObs(
     patient,
-    '5632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
-    `&encounterType=${EncounterType.FOLLOWUP_VISIT}&location=${location}&date=${lastDate}`,
+    Concepts.CURRENTLY_BREAST_FEEDING,
+    ``,
     view
   );
   const currentlyBreastfeedingChild =
@@ -36,8 +36,8 @@ export const useFindLatestObs = (
   const { obs: initialCd4AbsoluteObs, isLoading: loadingInitialCd4Absolute } =
     useFindObs(
       patient,
-      'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA001',
-      `&encounterType=${EncounterType.ENROLLMENT}&location=${location}&date=${lastDate}`,
+      Concepts.INNITIAL_CD4_COUNT,
+      ``,
       view
     );
   const initialCd4Absolute =
@@ -51,8 +51,8 @@ export const useFindLatestObs = (
     isLoading: loadingInitialCd4Percentage,
   } = useFindObs(
     patient,
-    'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA002',
-    `&encounterType=${EncounterType.ENROLLMENT}&location=${location}&date=${lastDate}`,
+    Concepts.INNITIAL_CD4_PERCENT,
+    ``,
     view
   );
 

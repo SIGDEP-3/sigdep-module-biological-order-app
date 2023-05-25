@@ -12,8 +12,8 @@ import Joi from 'joi';
 export interface OrderFormType {
   encounter: EncounterForm;
   order: OrderForm;
-  // breastfeeding: boolean;
-  //currentlyBreastfeedingChild : boolean;
+  pregnancyStatus?: string;
+  currentlyBreastfeedingChild?: string;
   
   hivType: string;
   isOnTreatment?: string;
@@ -49,23 +49,28 @@ export const orderFormSchema = Joi.object<OrderFormType>({
     .required()
     .messages({ 'string.empty': 'Le motif de la demande de CV est requis' }),
   otherCVReason: Joi.optional(),  
-  // breastfeeding: Joi.optional(),
-  //isPregnant: Joi.optional(),
-  initialCd4Absolute: Joi.string().required().messages({
+  pregnancyStatus : Joi.optional(),
+  currentlyBreastfeedingChild: Joi.optional(),
+  initialCd4Absolute: Joi.number().required().messages({
     'string.empty': 'La valeur absolue de CD4 initial est requise',
   }),
-  initialCd4Percentage: Joi.string()
+  initialCd4Percentage: Joi.number()
     .required()
     .messages({ 'string.empty': 'Le pourcentage de CD4 initial est requis' }),
   
   initialCd4Date: Joi.date()
     .required()
     .messages({ 'any.required': 'La date de CD4 initial est requise' }),
-  latestCd4Absolute: Joi.optional(),
-  latestCd4Percentage: Joi.optional(),
+  latestCd4Absolute: Joi.number().allow('').optional(),
+  latestCd4Percentage: Joi.number().allow('').optional(),
   latestCd4Date: Joi.optional(),
-  hasViralLoad: Joi.optional(),
-  latestViralLoad: Joi.optional(),
+  //hasViralLoad: Joi.optional(),
+  hasViralLoad: Joi.string().valid(Concepts.YES, Concepts.NO).required(),
+  latestViralLoad: Joi.optional().when('hasViralLoad', {
+    is: Concepts.YES,
+    then: Joi.number().required(),
+    otherwise: Joi.optional()
+  }),
   latestViralLoadDate: Joi.optional(),
   requestDate: Joi.date()
     .required()
@@ -76,7 +81,8 @@ export const orderFormSchema = Joi.object<OrderFormType>({
  // otherRegimeLine: Joi.optional(),
 });
 
-export const ORDER_FORM_INITIAL_VALUE: OrderFormType = {
+
+export const ORDER_FORM_INITIAL_VALUE: OrderFormType =  {
   encounter: {
     ...ENCOUNTER_INITIAL_VALUES,
     encounterProviders: [
@@ -92,8 +98,8 @@ export const ORDER_FORM_INITIAL_VALUE: OrderFormType = {
   },
   requestReason: '',
   hivType: '',
-  //currentlyBreastfeedingChild: false,
-  //pregnancyStatus : false ,
+  currentlyBreastfeedingChild: '',
+  pregnancyStatus : '' ,
   isOnTreatment: '',
   initialCd4Percentage: '',
   initialCd4Absolute: '',

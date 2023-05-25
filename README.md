@@ -1,11 +1,18 @@
 # SpboguiOpenmrs
 
-# Install dependencies
+# Instructions
 1. first install pnpm
     npm install -g pnpm
 
 2. install dependencies  
     pnpm install  
+
+3. Run in Dev mode
+    pnpm start
+
+4. Build for production
+   pnpm build
+
 
 <a href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
 

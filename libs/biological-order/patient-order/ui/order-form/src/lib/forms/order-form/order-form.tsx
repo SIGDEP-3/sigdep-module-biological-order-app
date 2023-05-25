@@ -95,44 +95,67 @@ export function OrderForm({
               <IconCircle stroke={1} color={'gray'} size={20} />
             )}
           </Group>
-          <Group>
+          {patient.person.gender === 'F'  &&(
             <Group>
-              <Text size={'sm'} pb={'xs'}>
-                Grossesse :
-              </Text>
-              <ObsInput
-                concept={Concepts.PREGNANCY_STATUS}
-                form={form}
-                type={'checkbox'}
-                name={'pregnancyStatus'}
-                readOnly
-                
-                // label={'Allaitement'}
-              />
-            </Group>
-            {/* <Text size={'sm'}>Grossesse : </Text>
-            {patient.person.gender === 'F' ? <IconSquareX /> : <IconSquare />}
-            <Space /> */}
-            <Space />
-            <Space />
-            <Group>
-              <Text size={'sm'} pb={'xs'}>
-                Allaitement :{' '}
-              </Text>
-              <ObsInput
-                concept={Concepts.CURRENTLY_BREAST_FEEDING}
-                form={form}
-                type={'checkbox'}
-                name={'currentlyBreastfeedingChild'}
-                readOnly
-                
-                // label={'Allaitement'}
-              />
-            </Group>
+              <Group>
+                <Text size={'sm'} pb={'xs'}>
+                  Grossesse :
+                </Text>
+                <ObsInput
+                  concept={Concepts.PREGNANCY_STATUS}
+                  form={form}
+                  type={'radio'}
+                  name={'pregnancyStatus'}
+                  readOnly>
 
-            {/* <Text size={'sm'}>Allaitement : </Text>
-            {patient.person.gender === 'M' ? <IconSquareX /> : <IconSquare />} */}
-          </Group>
+                  <Group>
+                    <Text size={'sm'} pb={'xs'}>
+                      Oui :{' '}
+                    </Text>
+                    <Radio value={Concepts.YES} />
+                    <Text size={'sm'} pb={'xs'}>
+                      Non :{' '}
+                    </Text>
+                    <Radio value={Concepts.NO} />
+                  </Group>
+                  </ObsInput>
+              </Group>
+              {/* <Text size={'sm'}>Grossesse : </Text>
+              {patient.person.gender === 'F' ? <IconSquareX /> : <IconSquare />}
+              <Space /> */}
+              <Space /> 
+              <Space /> 
+              <Space /> 
+              <Space />
+              <Space />
+              <Group>
+                <Text size={'sm'} pb={'xs'}>
+                  Allaitement :{' '}
+                </Text>
+                <ObsInput
+                  concept={Concepts.CURRENTLY_BREAST_FEEDING}
+                  form={form}
+                  type={'radio'}
+                  name={'currentlyBreastfeedingChild'}
+                  readOnly
+                >
+                  <Group>
+                    <Text size={'sm'} pb={'xs'}>
+                      Oui :{' '}
+                    </Text>
+                    <Radio value={Concepts.YES} />
+                    <Text size={'sm'} pb={'xs'}>
+                      Non :{' '}
+                    </Text>
+                    <Radio value={Concepts.NO} />
+                  </Group>
+                  </ObsInput>
+              </Group>
+
+              {/* <Text size={'sm'}>Allaitement : </Text>
+              {patient.person.gender === 'M' ? <IconSquareX /> : <IconSquare />} */}
+            </Group>
+           )}
           <Text size={'lg'} my={'lg'} weight={'bold'} color={'cyan.6'}>
             DONNEES CLINIQUES
           </Text>
@@ -547,7 +570,7 @@ export function OrderForm({
           <Group position="center" p={'xs'}>
             <Button type={'submit'}>Enregistrer</Button>
           </Group>
-          {/* {JSON.stringify(form.values.encounter)}   */}
+          {/* {JSON.stringify(form.values.encounter)}  */}
           {/* {JSON.stringify(form.errors)}   */}
         </Container>
         </>

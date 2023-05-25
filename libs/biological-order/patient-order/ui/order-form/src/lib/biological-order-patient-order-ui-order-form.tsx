@@ -77,16 +77,6 @@ export function BiologicalOrderPatientOrderUiOrderForm({
     'custom:(answers:(display,uuid))'
   );
 
-  // To removed - just to ensure the data are loaded
-  //console.log(
-   // pregnancyStatus,
-   // currentlyBreastfeedingChild,
-   // initialCd4Absolute,
-   // initialCd4Percentage
-  //);
-
-  // const { patient } = useFindOnePatient(patientId, 'full', true);
-
   const handleSubmit = (values: OrderFormType) => {
     form.values.encounter.patient = patient ?patient.uuid : "";
     console.log(JSON.stringify(values));
@@ -96,10 +86,24 @@ export function BiologicalOrderPatientOrderUiOrderForm({
 
   useEffect(() => {
     if (!form.values.requestDate) {
-      // form.values.encounter.encounterDatetime = requestDate;
       form.values.requestDate = requestDate;
     }
   }, [form, requestDate]);
+
+  const loadValues = () => {
+      if(pregnancyStatus){
+        form.values.pregnancyStatus = pregnancyStatus.uuid
+      }
+      if(currentlyBreastfeedingChild){
+        form.values.currentlyBreastfeedingChild = currentlyBreastfeedingChild.uuid
+      }
+      if(initialCd4Absolute){
+        form.values.initialCd4Absolute = initialCd4Absolute
+      }
+      if(initialCd4Percentage){
+        form.values.initialCd4Percentage =initialCd4Percentage
+      }
+  }
 
   useEffect(() => {
     if (concept && !isLoading && regimenList.length === 0) {
@@ -169,6 +173,8 @@ export function BiologicalOrderPatientOrderUiOrderForm({
       )}
 
       {!loading && (
+        <>
+        {loadValues()}
         <Paper withBorder>
           <Text p={'xs'} color={'cyan'} weight={'bold'}>
             Formulaire de demande de charge virale
@@ -184,6 +190,7 @@ export function BiologicalOrderPatientOrderUiOrderForm({
             />
           </Paper>
         </Paper>
+        </>
       )}
     </>
   );
